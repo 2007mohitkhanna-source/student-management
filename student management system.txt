@@ -1,0 +1,62 @@
+
+students = []
+
+def add_student():
+    roll_no = input("Enter Roll Number: ")
+    name = input("Enter Student Name: ")
+    age = input("Enter Age: ")
+    course = input("Enter Course: ")
+
+    student = {
+        "Roll Number": roll_no,
+        "Name": name,
+        "Age": age,
+        "Course": course
+    }
+
+    students.append(student)
+    print("Student record added successfully!")
+
+def view_students():
+    if not students:
+        print("\nNo student records found.")
+    else:
+        print("\n--- Student Records ---")
+        for student in students:
+            print("----------------------")
+            print("Roll Number:", student["Roll Number"])
+            print("Name:", student["Name"])
+            print("Age:", student["Age"])
+            print("Course:", student["Course"])
+
+def delete_student():
+    roll_no = input("Enter Roll Number to delete: ")
+
+    for student in students:
+        if student["Roll Number"] == roll_no:
+            students.remove(student)
+            print("Student record deleted successfully!")
+            return
+
+    print("Student record not found.")
+
+while True:
+    print("\n===== Student Management System =====")
+    print("1. Add Student")
+    print("2. View Students")
+    print("3. Delete Student")
+    print("4. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        add_student()
+    elif choice == "2":
+        view_students()
+    elif choice == "3":
+        delete_student()
+    elif choice == "4":
+        print("Exiting Student Management System.")
+        break
+    else:
+        print("Invalid choice! Please try again.")
